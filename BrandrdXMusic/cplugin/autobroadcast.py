@@ -22,8 +22,8 @@ BUTTONS = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(
-                "๏ BRAND ๏",
-                url=f"https://t.me/learningbots79",
+                "๏ X1JOD ๏",
+                url=f"https://t.me/NLTRIDE",
             )
         ]
     ]
@@ -35,16 +35,16 @@ MESSAGE = f"""**๏ ᴛʜɪs ɪs ᴀᴅᴠᴀɴᴄᴇᴅ ᴍᴜsɪᴄ ᴘʟᴀʏ
 
 ➥ sᴜᴘᴘᴏʀᴛᴇᴅ ᴡᴇʟᴄᴏᴍᴇ - ʟᴇғᴛ ɴᴏᴛɪᴄᴇ, ᴛᴀɢᴀʟʟ, ᴠᴄᴛᴀɢ, ʙᴀɴ - ᴍᴜᴛᴇ, sʜᴀʏʀɪ, ʟᴜʀɪᴄs, sᴏɴɢ - ᴠɪᴅᴇᴏ ᴅᴏᴡɴʟᴏᴀᴅ, ᴇᴛᴄ... ❤️
 
-🔐ᴜꜱᴇ » [/start](https://t.me/LB_Music_Bot?start=help) ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ
+🔐ᴜꜱᴇ » [/start](https://t.me/the_9xm_robot?start=help) ᴛᴏ ᴄʜᴇᴄᴋ ʙᴏᴛ
 
-➲ ʙᴏᴛ :** @LB_Music_Bot"""
+➲ ʙᴏᴛ :** @the_9xm_robot"""
 
 BUTTON = InlineKeyboardMarkup(
     [
         [
             InlineKeyboardButton(
                 "๏ ᴋɪᴅɴᴀᴘ ᴍᴇ ๏",
-                url=f"https://t.me/LB_Music_Bot?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
+                url=f"https://t.me/the_9xm_robot?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users",
             )
         ]
     ]
