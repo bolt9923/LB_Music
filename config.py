@@ -23,10 +23,9 @@ DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", 900))
 
 # Chat id of a group for logging bot's activities
 LOGGER_ID = int(getenv("LOGGER_ID", None))
-LOG_GROUP_ID = int(getenv("LOG_GROUP_ID", None))
 
-# Get this value Telegram id
-OWNER_ID = int(getenv("OWNER_ID", "5239830469"))
+# Get this value from @BRANDRD_ROBOT on Telegram by /id
+OWNER_ID = int(getenv("OWNER_ID", "7943244871"))
 
 ## Fill these variables if you're deploying on heroku.
 # Your heroku app name
@@ -36,15 +35,15 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY")
 
 UPSTREAM_REPO = getenv(
     "UPSTREAM_REPO",
-    "https://github.com/Learningbots79/LB_Music",
+    "https://github.com/CHALCOGEN645/MUSICBOT",
 )
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 GIT_TOKEN = getenv(
     "GIT_TOKEN", None
 )  # Fill this variable if your upstream repository is private
 
-SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/thikhaisamjhgya")
-SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/allinoneearning101")
+SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/ll_lafz_ll")
+SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/+KlbXA4vCNlwyMjA1")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
 AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
@@ -73,7 +72,7 @@ TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", 1073741824))
 # Checkout https://www.gbmb.org/mb-to-bytes for converting mb to bytes
 
 
-# Get your pyrogram v2 session
+# Get your pyrogram v2 session from @BRANDEDSTRINGSESSION_BOT on Telegram
 STRING1 = getenv("STRING_SESSION",  None)
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
@@ -89,15 +88,16 @@ autoclean = []
 confirmer = {}
 
 
+
 START_IMG_URL = getenv(
-    "START_IMG_URL", "https://envs.sh/08O.jpg"
+    "START_IMG_URL", "https://files.catbox.moe/zspu40.jpg"
 )
 PING_IMG_URL = getenv(
-    "PING_IMG_URL", "https://te.legra.ph/file/4f59fb748e1990acfa297.jpg"
+    "PING_IMG_URL", "https://files.catbox.moe/1i9pr6.jpg"
 )
-PLAYLIST_IMG_URL = "https://te.legra.ph/file/14eb59ea7d31229d8d751.jpg"
-STATS_IMG_URL = "https://te.legra.ph/file/4310ea5f523520b2b765b.jpg"
-TELEGRAM_AUDIO_URL = "https://te.legra.ph/file/923c1faac33d8c70335dc.jpg"
+PLAYLIST_IMG_URL = "https://files.catbox.moe/kya1f5.jpg"
+STATS_IMG_URL = "https://files.catbox.moe/l1ofzv.jpg"
+TELEGRAM_AUDIO_URL = "https://files.catbox.moe/zvhjen.jpg"
 TELEGRAM_VIDEO_URL = "https://te.legra.ph/file/6c66f8b192532fe758e82.jpg"
 STREAM_IMG_URL = "https://te.legra.ph/file/ebc4dc6357be06e08a3ed.jpg"
 SOUNCLOUD_IMG_URL = "https://te.legra.ph/file/d339f390ec168c19879c6.jpg"
