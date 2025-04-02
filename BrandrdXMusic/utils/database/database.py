@@ -13,6 +13,7 @@ blockeddb = mongodb.blockedusers
 chatsdb = mongodb.chats
 channeldb = mongodb.cplaymode
 countdb = mongodb.upcount
+connectdb = mongodb.connect
 gbansdb = mongodb.gban
 langdb = mongodb.language
 onoffdb = mongodb.onoffper
@@ -29,6 +30,7 @@ userdb = mongodb.userstats
 videodb = mongodb.vipvideocalls
 chatsdbc = mongodb.chatsc  # for clone
 usersdbc = mongodb.tgusersdbc  # for clone
+playlistdb = mongodb.playlist
 
 # Shifting to memory [mongo sucks often]
 active = []
@@ -51,6 +53,65 @@ suggestion = {}
 mute = {}
 audio = {}
 video = {}
+
+async def connect_to_chat(user_id: int, chat_id: int):
+    existing = await connectdb.find_one({'user_id': user_id, 'chat_id': chat_id})
+    if existing:
+        return True
+
+    result = await connectdb.update_one(
+        {'user_id': user_id},
+        {'$set': {'chat_id': chat_id}},
+        upsert=True
+    )
+    
+    return result.modified_count > 0 or result.upserted_id is not None
+
+async def _get_playlists(chat_id: int) -> Dict[str, int]:
+    _notes = await playlistdb.find_one({"chat_id": chat_id})
+    if not _notes:
+        return {}
+    return _notes["notes"]
+
+
+async def get_playlist_names(chat_id: int) -> List[str]:
+    _notes = []
+    for note in await _get_playlists(chat_id):
+        _notes.append(note)
+    return _notes
+
+
+async def get_playlist(chat_id: int, name: str) -> Union[bool, dict]:
+    name = name
+    _notes = await _get_playlists(chat_id)
+    if name in _notes:
+        return _notes[name]
+    else:
+        return False
+
+
+async def save_playlist(chat_id: int, name: str, note: dict):
+    name = name
+    _notes = await _get_playlists(chat_id)
+    _notes[name] = note
+    await playlistdb.update_one(
+        {"chat_id": chat_id}, {"$set": {"notes": _notes}}, upsert=True
+    )
+
+
+async def delete_playlist(chat_id: int, name: str) -> bool:
+    notesd = await _get_playlists(chat_id)
+    name = name
+    if name in notesd:
+        del notesd[name]
+        await playlistdb.update_one(
+            {"chat_id": chat_id},
+            {"$set": {"notes": notesd}},
+            upsert=True,
+        )
+        return True
+    return False
+
 
 # Total Queries on bot
 
@@ -191,7 +252,7 @@ async def set_assistant_new(chat_id, number):
 
 
 async def set_assistant(chat_id):
-    from BrandrdXMusic.core.userbot import assistants
+    from BABYMUSIC.core.userbot import assistants
 
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
@@ -205,7 +266,7 @@ async def set_assistant(chat_id):
 
 
 async def get_assistant(chat_id: int) -> str:
-    from BrandrdXMusic.core.userbot import assistants
+    from BABYMUSIC.core.userbot import assistants
 
     assistant = assistantdict.get(chat_id)
     if not assistant:
@@ -232,7 +293,7 @@ async def get_assistant(chat_id: int) -> str:
 
 
 async def set_calls_assistant(chat_id):
-    from BrandrdXMusic.core.userbot import assistants
+    from BABYMUSIC.core.userbot import assistants
 
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
@@ -245,7 +306,7 @@ async def set_calls_assistant(chat_id):
 
 
 async def group_assistant(self, chat_id: int) -> int:
-    from BrandrdXMusic.core.userbot import assistants
+    from BABYMUSIC.core.userbot import assistants
 
     assistant = assistantdict.get(chat_id)
     if not assistant:
@@ -324,7 +385,7 @@ async def is_autoend() -> bool:
     chat_id = 1234
     user = await autoenddb.find_one({"chat_id": chat_id})
     if not user:
-        return False
+        return True
     return True
 
 
